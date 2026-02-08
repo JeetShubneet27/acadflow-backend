@@ -14,6 +14,7 @@ from models import (
     ProjectMember,
     PlagiarismJob,
 )
+from fastapi.middleware.cors import CORSMiddleware
 from schemas import UserCreate, UserLogin, ProjectCreate, ProjectResponse
 from auth import (
     hash_password,
@@ -37,11 +38,17 @@ models.Base.metadata.create_all(bind=engine)
 # ----------------------------------------
 # Create FastAPI app
 # ----------------------------------------
-app = FastAPI(
-    title="AcadFlow API",
-    description="Research workflow, review & plagiarism platform",
-    version="1.0.0"
+app = FastAPI()
+
+# ✅ CORS middleware (required for frontend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all for now (safe for MVP)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
 
 
 
