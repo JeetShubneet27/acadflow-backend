@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+backend/venv/
+
+# Env files
+.env
+
+# SQLite DB
+*.db
+
+# Uploads
+uploads/
